@@ -13,7 +13,25 @@
   --color-danger: #c74747;
   --color-danger-soft: #fbecec;
   --color-item: #f8faf9;
+  --color-control: #f2f5f5;
+  --color-control-hover: #e3ebec;
   --shadow-card: 0 12px 30px rgba(38, 50, 56, 0.1);
+}
+
+body.dark-theme {
+  --color-background: #182326;
+  --color-surface: #243236;
+  --color-text: #edf4f4;
+  --color-muted: #afbec1;
+  --color-border: #405256;
+  --color-accent: #5bc0c7;
+  --color-accent-hover: #7bd0d5;
+  --color-danger: #ff8585;
+  --color-danger-soft: #493235;
+  --color-item: #2c3c40;
+  --color-control: #304246;
+  --color-control-hover: #3b4e52;
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.28);
 }
 
 body {
@@ -26,6 +44,7 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   font-family: "Noto Sans TC", "PingFang TC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
 .app {
@@ -38,16 +57,71 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
 h1 {
   margin: 0 0 24px;
-  text-align: center;
   font-size: 1.6rem;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.theme-toggle,
+.filter-button {
+  color: var(--color-text);
+  background: var(--color-control);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+
+.theme-toggle:hover,
+.filter-button:hover {
+  background: var(--color-control-hover);
 }
 
 .todo-form {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-button {
+  flex: 1;
+  padding: 8px 10px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.filter-button.active {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  font-weight: 700;
 }
 
 .todo-input {
@@ -63,6 +137,8 @@ h1 {
 
 .todo-input:focus-visible,
 .btn-add:focus-visible,
+.theme-toggle:focus-visible,
+.filter-button:focus-visible,
 .btn-delete:focus-visible,
 .todo-item input:focus-visible {
   outline: 3px solid var(--color-accent);
@@ -173,6 +249,18 @@ h1 {
 
   .app {
     padding: 20px 16px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  .theme-toggle {
+    padding: 7px 8px;
   }
 
   .todo-form {
