@@ -70,7 +70,7 @@ function updateFilterControls(visibleTodos) {
   } else if (visibleTodos.length === 0 && currentFilter === "active") {
     emptyState.textContent = "太棒了!目前沒有未完成事項。";
   } else if (visibleTodos.length === 0 && currentFilter === "completed") {
-    emptyState.textContent = "目前沒有已完成事項。";
+    emptyState.textContent = "目前沒有已完成事項,其他事項仍保留在清單中。";
   }
 }
 
